@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Systems xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../AssignedSystems.xsl">                              
+		<sql:query>                                                
+			EXECUTE up_select_xml_assigned_systems
+		</sql:query>                                               
+	</Systems> 

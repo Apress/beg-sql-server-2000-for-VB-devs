@@ -1,0 +1,4 @@
+CREATE PROCEDURE dbo.up_select_employees_and_locations AS
+
+EXEC up_select_locations
+EXEC up_select_employees

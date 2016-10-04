@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Employees xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../EmployeeAndLocation.xsl">                              
+		<sql:query>                                                
+			EXECUTE up_select_xml_employees_and_locations  
+		</sql:query>                                               
+	</Employees> 

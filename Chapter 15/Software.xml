@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Software xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+		<sql:xpath-query mapping-schema="../Schema/SoftwareSchema.xml">
+	        Software_T
+	    </sql:xpath-query>
+	</Software>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Employees xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../Employee.xsl">                              
+		<sql:query>                                                
+			SELECT First_Name_VC, Last_Name_VC FROM Employee_T 
+				FOR XML AUTO  
+		</sql:query>                                               
+	</Employees> 

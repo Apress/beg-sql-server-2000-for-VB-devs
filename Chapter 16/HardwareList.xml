@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Hardware xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../HardwareList.xsl">                              
+		<sql:query>                                                
+			EXECUTE up_select_xml_hardware
+		</sql:query>                                               
+	</Hardware> 

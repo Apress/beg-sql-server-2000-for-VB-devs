@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<REGRESSION>
+  <QUESTION>Show all employees
+    <RESTATEMENT>List the employees.</RESTATEMENT>
+    <ANSWER>The employees are:
+      <QUERY>
+        <![CDATA[select dbo.Employee_T.First_Name_VC, dbo.Employee_T.Last_Name_VC
+	from dbo.Employee_T]]>
+      </QUERY>
+    </ANSWER>
+  </QUESTION>
+  <QUESTION>What is Thearon's last name
+    <RESTATEMENT>What are the last names of the employees named Thearon?</RESTATEMENT>
+    <ANSWER>Thearon's last names are:
+      <QUERY>
+        <![CDATA[select distinct dbo.Employee_T.Last_Name_VC
+	from dbo.Employee_T
+	where dbo.Employee_T.First_Name_VC='Thearon'
+	or dbo.Employee_T.Last_Name_VC='Thearon']]>
+      </QUERY>
+    </ANSWER>
+  </QUESTION>
+</REGRESSION>

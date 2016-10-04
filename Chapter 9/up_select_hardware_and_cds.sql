@@ -1,0 +1,4 @@
+CREATE PROCEDURE dbo.up_select_hardware_and_cds AS
+
+EXEC up_select_cd_types
+EXEC up_select_hardware

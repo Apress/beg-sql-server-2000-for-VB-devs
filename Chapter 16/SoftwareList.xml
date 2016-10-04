@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Software xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../SoftwareList.xsl">                              
+		<sql:query>                                                
+			EXECUTE up_select_xml_software
+		</sql:query>                                               
+	</Software> 

@@ -1,0 +1,13 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{3A71645E-EC68-11D1-893C-00C04FC2D0A8}") = "Hardware Tracking", "Hardware Tracking.eqp", "{39B26E1E-A8B6-4050-B662-61E3A96CBB16}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {39B26E1E-A8B6-4050-B662-61E3A96CBB16}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+		0 = {39B26E1E-A8B6-4050-B662-61E3A96CBB16}
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal

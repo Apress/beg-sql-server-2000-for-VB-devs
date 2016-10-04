@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<EQPROJECT NAME="Hardware Tracking" VERSION="1.2">
+  <MODULE ID="MODULE:Module1">Module1.eqm</MODULE>
+  <PROJECT>
+    <DATABASE ID="">
+      <DSN>Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Hardware Tracking;Data Source=wstravel\sql2000</DSN>
+      <DBMS TYPE="SQLSERVER" VERSION="08.00.0100"/>
+      <OUTERJOINS/>
+      <LOADWORDS AMOUNT="500"/>
+      <DBMAXROWS>100</DBMAXROWS>
+      <DBTIMEOUT>120</DBTIMEOUT>
+    </DATABASE>
+    <DEFAULTS>
+      <DEFAULTNAMES HREF="ENTITY:employee"/>
+      <SPELLING/>
+      <USERCONTEXT/>
+    </DEFAULTS>
+    <REGRESSION QUESTFILE="Regression1.eqr"/>
+  </PROJECT>
+</EQPROJECT>

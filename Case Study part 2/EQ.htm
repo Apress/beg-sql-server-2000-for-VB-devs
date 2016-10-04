@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<TITLE>Beginning SQL Server 2000 for VB Developers</TITLE>
+<LINK Rel="StyleSheet" Type="Text/CSS" Href="htPageStyles.css"/>
+</HEAD>
+<BODY>
+<FORM Action="Response.asp" Method="Post" Name="frmQuestion">
+	<TABLE Border="0" Width="100%" Class="NormalText">
+		<TR>
+			<TH>
+				<CENTER>
+					Hardware Tracking English Query Application
+				</CENTER>
+			</TH>
+		</TR>
+		<TR>
+			<TD>&nbsp;</TD>
+		</TR>
+		<TR>
+			<TD>
+				Enter your question 
+				<SMALL>(e.g. <EM>Show all employees.</EM> or 
+					<EM>Who works at the Home Office?</EM>)
+				</SMALL>
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<INPUT Type="Text" Name="txtQuestion" Size="75">
+			</TD>
+		</TR>
+		<TR>
+			<TD>
+				<INPUT Type="Button" Name="btnSubmit" 
+					Value="Submit Question">
+			</TD>
+		</TR>
+	</TABLE>
+</FORM>
+<SCRIPT Language="VBScript">
+Sub Window_OnLoad()
+	'Set focus to the question field
+	frmQuestion.txtQuestion.focus()
+End Sub
+
+Sub btnSubmit_OnClick()
+	'Validate some text exists in the txtQuestion field
+	If Len(Trim(frmQuestion.txtQuestion.value)) = 0 Then
+		'Display a message box
+		MsgBox "Please enter a question to be asked.", _
+			vbInformation + vbOKOnly, "Hardware Tracking EQ"
+		'Set focus to the field in error
+		frmQuestion.txtQuestion.focus()
+		'Exit the procedure without submitting the form
+		Exit Sub
+	End If
+	
+	'Submit the form
+	frmQuestion.submit()
+End Sub
+</SCRIPT>
+</BODY>
+</HTML>

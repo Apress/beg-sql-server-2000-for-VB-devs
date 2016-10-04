@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<MODULE ID="MODULE:Module1" VERSION="1.2">
+  <SEMANTICS>
+    <ENTITY ID="ENTITY:assigned_system">
+      <WORD>assigned system</WORD>
+      <DBOBJECT TABLE="TABLE:dbo.System_Assignment_T"/>
+      <DISPLAY FIELD="FIELD:dbo.System_Assignment_T.System_Assignment_ID"/>
+      <DISPLAY FIELD="FIELD:dbo.Employee_T.First_Name_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Employee_T.Last_Name_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Manufacturer_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Model_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Processor_Speed_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Memory_VC"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:category">
+      <WORD>category</WORD>
+      <DBOBJECT FIELD="FIELD:dbo.Software_Category_T.Software_Category_VC"/>
+      <NAMETYPE TYPE="PROPERNOUN"/>
+      <ATTRIBUTEOF HREF="ENTITY:software"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:employee">
+      <ENTITYTYPE TYPE="PERSON"/>
+      <WORD>employee</WORD>
+      <DBOBJECT TABLE="TABLE:dbo.Employee_T"/>
+      <DISPLAY FIELD="FIELD:dbo.Employee_T.First_Name_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Employee_T.Last_Name_VC"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:employee_name">
+      <WORD>employee name</WORD>
+      <DBOBJECT FIELD="FIELD:dbo.Employee_T.First_Name_VC"/>
+      <DBOBJECT FIELD="FIELD:dbo.Employee_T.Last_Name_VC"/>
+      <NAMETYPE TYPE="PROPERNOUN"/>
+      <ATTRIBUTEOF HREF="ENTITY:employee"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:hardware">
+      <WORD>hardware</WORD>
+      <DBOBJECT TABLE="TABLE:dbo.Hardware_T"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Hardware_ID"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Manufacturer_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Model_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Processor_Speed_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Memory_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.HardDrive_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Sound_Card_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Speakers_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Video_Card_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Monitor_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Serial_Number_VC"/>
+      <DISPLAY FIELD="FIELD:dbo.Hardware_T.Lease_Expiration_DT"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:installed_software">
+      <WORD>installed software</WORD>
+      <DBOBJECT TABLE="TABLE:dbo.System_Software_Relationship_T"/>
+      <DISPLAY FIELD="FIELD:dbo.System_Software_Relationship_T.Software_ID"/>
+      <DISPLAY FIELD="FIELD:dbo.Software_T.Software_Name_VC"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:location">
+      <ENTITYTYPE TYPE="GEOGRAPHICAL"/>
+      <WORD>location</WORD>
+      <DBOBJECT FIELD="FIELD:dbo.Location_T.Location_Name_VC"/>
+      <NAMETYPE TYPE="CLASSIFIERNOUN"/>
+      <ATTRIBUTEOF HREF="ENTITY:employee"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:phone_number">
+      <WORD>phone number</WORD>
+      <DBOBJECT FIELD="FIELD:dbo.Employee_T.Phone_Number_VC"/>
+      <ATTRIBUTEOF HREF="ENTITY:employee"/>
+    </ENTITY>
+    <ENTITY ID="ENTITY:software">
+      <WORD>software</WORD>
+      <DBOBJECT TABLE="TABLE:dbo.Software_T"/>
+      <DISPLAY FIELD="FIELD:dbo.Software_T.Software_ID"/>
+      <DISPLAY FIELD="FIELD:dbo.Software_T.Software_Name_VC"/>
+      <SORTBY>
+        <SORTBYFIELD HREF="FIELD:dbo.Software_T.Software_Name_VC"/>
+      </SORTBY>
+    </ENTITY>
+    <ENTITY ID="ENTITY:system">
+      <WORD>system</WORD>
+      <WORD>computer</WORD>
+      <DBOBJECT FIELD="FIELD:dbo.System_Assignment_T.System_Assignment_ID"/>
+      <ATTRIBUTEOF HREF="ENTITY:employee"/>
+    </ENTITY>
+    <RELATIONSHIP ID="RELATIONSHIP:assigned_systems_have_installed_softwares">
+      <JOINTABLE TABLE="TABLE:dbo.System_Software_Relationship_T"/>
+      <ROLE ID="ROLE:assigned_systems_have_installed_softwares.installed_software" HREF="ENTITY:installed_software"/>
+      <ROLE ID="ROLE:assigned_systems_have_installed_softwares.assigned_system" HREF="ENTITY:assigned_system"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:assigned_systems_have_installed_softwares.assigned_systems..20have..20installed_softwares">
+          <SUBJECT ROLEREF="ROLE:assigned_systems_have_installed_softwares.assigned_system"/>
+          <OBJECT ROLEREF="ROLE:assigned_systems_have_installed_softwares.installed_software"/>
+        </TRAITPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employee_names_are_the_names_of_employees">
+      <JOINTABLE TABLE="TABLE:dbo.Employee_T"/>
+      <ROLE ID="ROLE:employee_names_are_the_names_of_employees.employee_name" HREF="ENTITY:employee_name"/>
+      <ROLE ID="ROLE:employee_names_are_the_names_of_employees.employee" HREF="ENTITY:employee"/>
+      <PHRASINGS>
+        <NAMEPHRASING ID="PHRASING:employee_names_are_the_names_of_employees.employee_names..20are..20the..20names..20of..20employees">
+          <SUBJECT ROLEREF="ROLE:employee_names_are_the_names_of_employees.employee"/>
+          <OBJECT ROLEREF="ROLE:employee_names_are_the_names_of_employees.employee_name"/>
+        </NAMEPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employees_have_assigned_systems">
+      <JOINTABLE TABLE="TABLE:dbo.System_Assignment_T"/>
+      <ROLE ID="ROLE:employees_have_assigned_systems.employee" HREF="ENTITY:employee"/>
+      <ROLE ID="ROLE:employees_have_assigned_systems.assigned_system" HREF="ENTITY:assigned_system"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:employees_have_assigned_systems.employees..20have..20assigned_systems">
+          <SUBJECT ROLEREF="ROLE:employees_have_assigned_systems.employee"/>
+          <OBJECT ROLEREF="ROLE:employees_have_assigned_systems.assigned_system"/>
+        </TRAITPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employees_have_locations">
+      <JOINTABLE TABLE="TABLE:dbo.Employee_T"/>
+      <ROLE ID="ROLE:employees_have_locations.employee" HREF="ENTITY:employee"/>
+      <ROLE ID="ROLE:employees_have_locations.location" HREF="ENTITY:location"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:employees_have_locations.employees..20have..20locations">
+          <SUBJECT ROLEREF="ROLE:employees_have_locations.employee"/>
+          <OBJECT ROLEREF="ROLE:employees_have_locations.location"/>
+        </TRAITPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employees_have_phone_numbers">
+      <JOINTABLE TABLE="TABLE:dbo.Employee_T"/>
+      <ROLE ID="ROLE:employees_have_phone_numbers.employee" HREF="ENTITY:employee"/>
+      <ROLE ID="ROLE:employees_have_phone_numbers.phone_number" HREF="ENTITY:phone_number"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:employees_have_phone_numbers.employees..20have..20phone_numbers">
+          <SUBJECT ROLEREF="ROLE:employees_have_phone_numbers.employee"/>
+          <OBJECT ROLEREF="ROLE:employees_have_phone_numbers.phone_number"/>
+        </TRAITPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employees_have_systems">
+      <JOINTABLE TABLE="TABLE:dbo.System_Assignment_T"/>
+      <ROLE ID="ROLE:employees_have_systems.system" HREF="ENTITY:system"/>
+      <ROLE ID="ROLE:employees_have_systems.employee" HREF="ENTITY:employee"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:employees_have_systems.employees..20have..20systems">
+          <SUBJECT ROLEREF="ROLE:employees_have_systems.employee"/>
+          <OBJECT ROLEREF="ROLE:employees_have_systems.system"/>
+        </TRAITPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:employees_work_at_locations">
+      <JOINTABLE TABLE="TABLE:dbo.Employee_T"/>
+      <ROLE ID="ROLE:employees_work_at_locations.location" HREF="ENTITY:location"/>
+      <ROLE ID="ROLE:employees_work_at_locations.employee" HREF="ENTITY:employee"/>
+      <PHRASINGS>
+        <VERBPHRASING ID="PHRASING:employees_work_at_locations.employees..20work..20at..20locations">
+          <SUBJECT ROLEREF="ROLE:employees_work_at_locations.employee"/>
+          <VERB>work</VERB>
+          <PREPPHRASE>
+            <PREP>at</PREP>
+            <OBJECT ROLEREF="ROLE:employees_work_at_locations.location"/>
+          </PREPPHRASE>
+        </VERBPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+    <RELATIONSHIP ID="RELATIONSHIP:softwares_have_categories">
+      <JOINTABLE TABLE="TABLE:dbo.Software_T"/>
+      <ROLE ID="ROLE:softwares_have_categories.category" HREF="ENTITY:category"/>
+      <ROLE ID="ROLE:softwares_have_categories.software" HREF="ENTITY:software"/>
+      <PHRASINGS>
+        <TRAITPHRASING ID="PHRASING:softwares_have_categories.softwares..20have..20categories">
+          <SUBJECT ROLEREF="ROLE:softwares_have_categories.software"/>
+          <OBJECT ROLEREF="ROLE:softwares_have_categories.category"/>
+        </TRAITPHRASING>
+        <PREPPHRASING ID="PHRASING:softwares_have_categories.softwares..20are..20in..20categories">
+          <SUBJECT ROLEREF="ROLE:softwares_have_categories.software"/>
+          <PREP>in</PREP>
+          <OBJECT ROLEREF="ROLE:softwares_have_categories.category"/>
+        </PREPPHRASING>
+      </PHRASINGS>
+    </RELATIONSHIP>
+  </SEMANTICS>
+  <TABLES DATABASE="" SCHEMA="dbo">
+    <TABLE ID="TABLE:dbo.CD_T">
+      <FIELD ID="FIELD:dbo.CD_T.CD_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.CD_T.CD_Type_CH" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.CD_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Employee_T">
+      <FIELD ID="FIELD:dbo.Employee_T.Employee_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Employee_T.Location_ID" DATATYPE="INTEGER">
+        <NULLABLE/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Employee_T.First_Name_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+        <NAMESTRUCTURE TYPE="FIRSTNAME"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Employee_T.Last_Name_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+        <NAMESTRUCTURE TYPE="LASTNAME"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Employee_T.Phone_Number_VC" DATATYPE="STRING">
+        <NULLABLE/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Employee_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.Employee_T.Location_ID..7edbo.Location_T.Location_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.Employee_T.Location_ID" DESTINATIONFIELD="FIELD:dbo.Location_T.Location_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Hardware_Notes_T">
+      <FIELD ID="FIELD:dbo.Hardware_Notes_T.Hardware_Notes_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_Notes_T.Hardware_ID" DATATYPE="INTEGER">
+        <CAPTION>Hardware_ID</CAPTION>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_Notes_T.Hardware_Notes_TX" DATATYPE="TEXT"/>
+      <FIELD ID="FIELD:dbo.Hardware_Notes_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.Hardware_Notes_T.Hardware_ID..7edbo.Hardware_T.Hardware_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.Hardware_Notes_T.Hardware_ID" DESTINATIONFIELD="FIELD:dbo.Hardware_T.Hardware_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Hardware_T">
+      <FIELD ID="FIELD:dbo.Hardware_T.Hardware_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.CD_ID" DATATYPE="INTEGER"/>
+      <FIELD ID="FIELD:dbo.Hardware_T.Manufacturer_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Model_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Processor_Speed_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Memory_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.HardDrive_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Sound_Card_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Speakers_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Video_Card_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Monitor_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Serial_Number_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="UPPER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Lease_Expiration_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Hardware_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.Hardware_T.CD_ID..7edbo.CD_T.CD_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.Hardware_T.CD_ID" DESTINATIONFIELD="FIELD:dbo.CD_T.CD_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Location_T">
+      <FIELD ID="FIELD:dbo.Location_T.Location_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Location_T.Location_Name_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Location_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Software_Category_T">
+      <FIELD ID="FIELD:dbo.Software_Category_T.Software_Category_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Software_Category_T.Software_Category_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Software_Category_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.Software_T">
+      <FIELD ID="FIELD:dbo.Software_T.Software_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Software_T.Software_Category_ID" DATATYPE="INTEGER"/>
+      <FIELD ID="FIELD:dbo.Software_T.Software_Name_VC" DATATYPE="STRING">
+        <CAPITALIZATION TYPE="FIRSTLETTER"/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.Software_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.Software_T.Software_Category_ID..7edbo.Software_Category_T.Software_Category_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.Software_T.Software_Category_ID" DESTINATIONFIELD="FIELD:dbo.Software_Category_T.Software_Category_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.System_Assignment_T">
+      <FIELD ID="FIELD:dbo.System_Assignment_T.System_Assignment_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.System_Assignment_T.Employee_ID" DATATYPE="INTEGER"/>
+      <FIELD ID="FIELD:dbo.System_Assignment_T.Hardware_ID" DATATYPE="INTEGER"/>
+      <FIELD ID="FIELD:dbo.System_Assignment_T.Last_Update_DT" DATATYPE="DATE">
+        <DATETYPE TYPE="DATETIME"/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.System_Assignment_T.Employee_ID..7edbo.Employee_T.Employee_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.System_Assignment_T.Employee_ID" DESTINATIONFIELD="FIELD:dbo.Employee_T.Employee_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+      <JOIN ID="JOIN:dbo.System_Assignment_T.Hardware_ID..7edbo.Hardware_T.Hardware_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.System_Assignment_T.Hardware_ID" DESTINATIONFIELD="FIELD:dbo.Hardware_T.Hardware_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+    <TABLE ID="TABLE:dbo.System_Software_Relationship_T">
+      <FIELD ID="FIELD:dbo.System_Software_Relationship_T.System_Assignment_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <FIELD ID="FIELD:dbo.System_Software_Relationship_T.Software_ID" DATATYPE="INTEGER">
+        <KEY/>
+      </FIELD>
+      <JOIN ID="JOIN:dbo.System_Software_Relationship_T.Software_ID..7edbo.Software_T.Software_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.System_Software_Relationship_T.Software_ID" DESTINATIONFIELD="FIELD:dbo.Software_T.Software_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+      <JOIN ID="JOIN:dbo.System_Software_Relationship_T.System_Assignment_ID..7edbo.System_Assignment_T.System_Assignment_ID">
+        <CONDITION SOURCEFIELD="FIELD:dbo.System_Software_Relationship_T.System_Assignment_ID" DESTINATIONFIELD="FIELD:dbo.System_Assignment_T.System_Assignment_ID"/>
+        <OUTERJOIN/>
+      </JOIN>
+    </TABLE>
+  </TABLES>
+</MODULE>

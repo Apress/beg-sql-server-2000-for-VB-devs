@@ -1,0 +1,5 @@
+CREATE PROCEDURE dbo.up_select_cd_types AS
+
+SELECT CD_ID, CD_Type_CH
+	FROM CD_T
+	ORDER BY CD_Type_CH

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+	<Hardware xmlns:sql="urn:schemas-microsoft-com:xml-sql"          
+		sql:xsl="../SystemSpecs.xsl">                              
+		<sql:header>
+			<sql:param name="Hardware_ID">1</sql:param>  
+		</sql:header>                                          
+		<sql:query>                                                
+			EXECUTE up_parmsel_xml_hardware @Hardware_ID
+		</sql:query>                                               
+	</Hardware> 

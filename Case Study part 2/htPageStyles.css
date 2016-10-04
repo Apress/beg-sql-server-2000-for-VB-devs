@@ -1,0 +1,60 @@
+TH 
+{ 
+	background-color: #CCCCCC;  
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 12pt;
+}
+
+.NormalText
+{
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+}
+
+.BlueText
+{
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+	color: #000080;
+	cursor: hand;
+}
+
+A.BlueText
+{
+	text-decoration: none;
+}
+
+A.BlueText:Hover
+{
+	color: #FF0000;
+}
+
+.RedText
+{
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+	color: #FF0000;
+	cursor: hand;
+}
+
+.EvenRow
+{
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+	background-color: #FFFFFF;
+}
+
+.OddRow
+{
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+	background-color: #F5F5F5;
+}
+.TableHeader
+{ 
+	background-color: #000080;  
+	font-family: Arial, Verdana, Helvetica;
+	font-size: 10pt;
+	font-weight: bold;
+	color: #FFFFFF;
+}

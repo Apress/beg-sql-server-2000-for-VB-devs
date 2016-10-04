@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>                      
+<Schema xmlns="urn:schemas-microsoft-com:xml-data"
+	xmlns:dt="urn:schemas-microsoft-com:datatypes"
+	xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+
+	<ElementType name="Software_T" sql:relation="Software_T">
+		<AttributeType name="ID"/>
+		<AttributeType name="Software"/>
+
+		<attribute type="ID" sql:field="Software_ID"/>
+		<attribute type="Software" sql:field="Software_Name_VC"/>
+	</ElementType>
+</Schema>
+
